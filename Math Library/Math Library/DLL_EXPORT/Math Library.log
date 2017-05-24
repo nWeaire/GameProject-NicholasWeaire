@@ -1,0 +1,17 @@
+﻿  Vector4.cpp
+  Vector3.cpp
+  Vector2.cpp
+  Matrix4.cpp
+c:\users\s171762\desktop\math library assignment - nicholas weaire\math library\math library\matrix4.cpp(137): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\s171762\desktop\math library assignment - nicholas weaire\math library\math library\matrix4.cpp(184): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\s171762\desktop\math library assignment - nicholas weaire\math library\math library\matrix4.cpp(193): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Matrix3.cpp
+c:\users\s171762\desktop\math library assignment - nicholas weaire\math library\math library\matrix3.cpp(203): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\s171762\desktop\math library assignment - nicholas weaire\math library\math library\matrix3.cpp(212): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Matrix2.cpp
+c:\users\s171762\desktop\math library assignment - nicholas weaire\math library\math library\matrix2.cpp(109): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\s171762\desktop\math library assignment - nicholas weaire\math library\math library\matrix2.cpp(118): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Generating Code...
+     Creating library C:\Users\s171762\Desktop\Math Library Assignment - Nicholas Weaire\Math Library\DLL_EXPORT\Math Library.lib and object C:\Users\s171762\Desktop\Math Library Assignment - Nicholas Weaire\Math Library\DLL_EXPORT\Math Library.exp
+  Math Library.vcxproj -> C:\Users\s171762\Desktop\Math Library Assignment - Nicholas Weaire\Math Library\DLL_EXPORT\Math Library.dll
+  Math Library.vcxproj -> C:\Users\s171762\Desktop\Math Library Assignment - Nicholas Weaire\Math Library\DLL_EXPORT\Math Library.pdb (Partial PDB)
