@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "Renderer2D.h"
 #include "Audio.h"
+#include "CollisionManager.h"
 
 class Application2D : public aie::Application {
 public:

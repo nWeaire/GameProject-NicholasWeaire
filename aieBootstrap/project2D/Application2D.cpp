@@ -16,7 +16,7 @@ Application2D::~Application2D()
 bool Application2D::startup() 
 {
 	m_2dRenderer = new Renderer2D();
-
+	CollisionManager::Create();
 
 	m_cameraX = 0;
 	m_cameraY = 0;
@@ -28,6 +28,7 @@ bool Application2D::startup()
 void Application2D::shutdown() 
 {
 	delete m_2dRenderer;
+	CollisionManager::GetInstance()->Destroy();
 }
 
 void Application2D::update(float deltaTime) 
