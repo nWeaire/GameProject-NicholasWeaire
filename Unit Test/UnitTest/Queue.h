@@ -51,6 +51,6 @@ public:
 		q.printList();
 	}
 
-
+private:
 	LinkedList<T> q;
 };
