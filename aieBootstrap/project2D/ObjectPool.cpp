@@ -1,14 +1,14 @@
 #include "ObjectPool.h"
-#include "Entity.h"
+#include "ObjectPoolEntity.h"
 
 ObjectPool::ObjectPool(int nMaxSize)
 {
 	m_nMaxSize = nMaxSize;
-	m_pPool = new Entity*[nMaxSize];
+	m_pPool = new ObjectPoolEntity*[nMaxSize];
 
 	for (int i = 0; i < nMaxSize; ++i)
 	{
-		m_pPool[i] = new Entity();
+		m_pPool[i] = new ObjectPoolEntity();
 	}
 
 }
@@ -18,7 +18,7 @@ ObjectPool::~ObjectPool()
 	delete[] m_pPool;
 }
 
-Entity * ObjectPool::Allocate()
+ObjectPoolEntity* ObjectPool::Allocate()
 {
 	for (int i = 0; i < m_nMaxSize; ++i)
 	{
@@ -33,7 +33,7 @@ Entity * ObjectPool::Allocate()
 	return nullptr;
 }
 
-void ObjectPool::Deallocate(Entity* object)
+void ObjectPool::Deallocate(ObjectPoolEntity* object)
 {
 	object->SetActive(false);
 }

@@ -1,24 +1,65 @@
 #include "Entity.h"
 
 
-
+//-------------------------------------
+// Default Constructor
+//-------------------------------------
 Entity::Entity()
 {
-	m_bActive = false;
-
+	Parent = nullptr; // sets parent to nullptr for saftey
+	float speed = 0; // sets speed
+	float rotSpeed = 0; // rot speed
+	float mass = 0 ; // sets mass
 }
 
-
+//-------------------------------------
+// Default Destructor
+//-------------------------------------
 Entity::~Entity()
 {
 }
 
-void Entity::SetActive(bool bActive)
+//-------------------------------------
+// Updates Global and Local tranforms of objects for movement, rotation and Scale
+//-------------------------------------
+void Entity::UpdateTransforms()
 {
-	m_bActive = bActive;
+	if (Parent) // Checks for a parent class
+	{
+		GlobalTransform = Parent->GlobalTransform * LocalTransform; // If there is a parent updates with parents movement
+	}
+	else
+	{
+		GlobalTransform = LocalTransform; // if no parent changes own movement, scale and rotation
+	}
 }
 
-bool Entity::GetActive()
+//-------------------------------------
+// Sets the parent for matrix hierarchy
+// Param:
+//		Entity*: The object you want to set the parent as
+//-------------------------------------
+void Entity::SetParent(Entity * parent)
 {
-	return m_bActive;
+	Parent = parent;
+}
+
+//-------------------------------------
+// Adds a Child to a dynamic array 
+// Param:
+//		Entity*: The object you want to set the child as
+//-------------------------------------
+void Entity::AddChild(Entity * child)
+{
+	Children.push_back(child); // Adds a child to dynamic vector
+}
+
+//-------------------------------------
+// Adds a Child to a dynamic array 
+// Returns:
+//		Collider2D: Returns the values for the AABB 
+//-------------------------------------
+Collider2D Entity::getCollider()
+{
+	return Box;
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-class Entity;
+class ObjectPoolEntity;
 
 class ObjectPool
 {
@@ -8,11 +8,11 @@ public:
 	ObjectPool(int nMaxSize);
 	~ObjectPool();
 
-	Entity* Allocate();
-	void Deallocate(Entity* object);
+	ObjectPoolEntity* Allocate();
+	void Deallocate(ObjectPoolEntity* object);
 
 private:
-	Entity** m_pPool;
+	ObjectPoolEntity** m_pPool;
 	int m_nMaxSize;
 
 };
