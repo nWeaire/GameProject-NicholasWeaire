@@ -21,7 +21,7 @@ public:
 
 protected:
 
-
+	StateMachine*		m_StateMachine;
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Texture*		m_shipTexture;
 	aie::Font*			m_font;

@@ -2,34 +2,15 @@
 
 StateMachine* StateMachine::m_instance = nullptr;
 
-//-------------------------------------
-// Returns the collision manager for use in classes  
-// Returns:
-//		CollisionManager: to allow other objects to use collison manager
-//-------------------------------------
-StateMachine* StateMachine::GetInstance()
+StateMachine::StateMachine()
 {
-	return m_instance;
+	m_nCurrentState = -1;
 }
 
-//-------------------------------------
-// Creates new collision manager and checks theres only one 
-//-------------------------------------
-void StateMachine::Create()
+StateMachine::~StateMachine()
 {
-	if (!m_instance)
-	{
-		m_instance = new StateMachine();
-	}
 }
 
-//-------------------------------------
-// Deletes collision manager
-//-------------------------------------
-void StateMachine::Destroy()
-{
-	delete m_instance;
-}
 
 void StateMachine::Update(float fDeltaTime)
 {
@@ -63,11 +44,4 @@ void StateMachine::AddState(int nStateIndex, State * pState)
 	m_StateList.Insert(nStateIndex, pState);
 }
 
-StateMachine::StateMachine()
-{
-}
-
-StateMachine::~StateMachine()
-{
-}
 

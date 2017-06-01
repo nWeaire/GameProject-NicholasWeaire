@@ -19,8 +19,8 @@ bool Application2D::startup()
 	m_2dRenderer = new Renderer2D();
 	CollisionManager::Create();
 	
-	StateMachine::Create();
-
+	m_StateMachine = new StateMachine();
+	
 	
 
 

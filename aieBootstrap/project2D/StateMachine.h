@@ -1,5 +1,5 @@
 #pragma once
-#include "DynamicArray.h"
+#include "Stack.h"
 #include "State.h"
 
 
@@ -7,13 +7,10 @@ class StateMachine
 {
 public:
 
+	StateMachine();
+	~StateMachine();
 
-	StateMachine * GetInstance();
-
-	static void Create();
-
-	static void Destroy();
-
+	
 	void Update(float fDeltaTime);
 	void Draw(Renderer2D* m_2dRenderer);
 	void SetState(int nStateIndex);
@@ -21,14 +18,12 @@ public:
 
 private:
 	
-	int m_nCurrentState = -1;
+	int m_nCurrentState;
 	
-	DynamicArray<State*> m_StateList;
+	Stack<State*> m_StateList;
 
 	static StateMachine* m_instance;
 
-	StateMachine();
-	~StateMachine();
 
 };
 
