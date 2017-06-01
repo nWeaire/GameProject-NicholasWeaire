@@ -19,9 +19,9 @@ void Menu::OnUpdate(float fDeltaTime)
 {
 }
 
-//void Menu::OnDraw(Renderer2D* m_2dRenderer)
-//{
-//}
+void Menu::OnDraw(Renderer2D* m_2dRenderer)
+{
+}
 
 void Menu::OnExit()
 {

@@ -4,6 +4,8 @@
 #include "Renderer2D.h"
 #include "Audio.h"
 #include "CollisionManager.h"
+#include "StateMachine.h"
+#include "ObjectPool.h"
 
 class Application2D : public aie::Application {
 public:
@@ -18,6 +20,7 @@ public:
 	virtual void draw();
 
 protected:
+
 
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Texture*		m_shipTexture;

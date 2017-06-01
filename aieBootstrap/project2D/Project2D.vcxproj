@@ -95,7 +95,6 @@
     <ClCompile Include="Collider2D.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="ObjectPool.cpp" />
@@ -106,6 +105,7 @@
   <ItemGroup>
     <ClInclude Include="Application2D.h" />
     <ClInclude Include="Collider2D.h" />
+    <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Graph.h" />

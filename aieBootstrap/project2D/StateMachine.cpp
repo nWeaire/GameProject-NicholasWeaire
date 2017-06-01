@@ -1,15 +1,34 @@
 #include "StateMachine.h"
 
+StateMachine* StateMachine::m_instance = nullptr;
 
-
-StateMachine::StateMachine()
+//-------------------------------------
+// Returns the collision manager for use in classes  
+// Returns:
+//		CollisionManager: to allow other objects to use collison manager
+//-------------------------------------
+StateMachine* StateMachine::GetInstance()
 {
-	m_nCurrentState = -1;
+	return m_instance;
 }
 
-
-StateMachine::~StateMachine()
+//-------------------------------------
+// Creates new collision manager and checks theres only one 
+//-------------------------------------
+void StateMachine::Create()
 {
+	if (!m_instance)
+	{
+		m_instance = new StateMachine();
+	}
+}
+
+//-------------------------------------
+// Deletes collision manager
+//-------------------------------------
+void StateMachine::Destroy()
+{
+	delete m_instance;
 }
 
 void StateMachine::Update(float fDeltaTime)
@@ -20,13 +39,13 @@ void StateMachine::Update(float fDeltaTime)
 	m_StateList[m_nCurrentState]->OnUpdate(fDeltaTime);
 }
 
-//void StateMachine::Draw(Renderer2D* m_2dRenderer)
-//{
-//	if (m_StateList.Size() <= 0)
-//		return;
-//
-//	m_StateList[m_nCurrentState]->OnDraw(m_2dRenderer);
-//}
+void StateMachine::Draw(Renderer2D* m_2dRenderer)
+{
+	if (m_StateList.Size() <= 0)
+		return;
+
+	m_StateList[m_nCurrentState]->OnDraw(m_2dRenderer);
+}
 
 void StateMachine::SetState(int nStateIndex)
 {
@@ -43,3 +62,12 @@ void StateMachine::AddState(int nStateIndex, State * pState)
 {
 	m_StateList.Insert(nStateIndex, pState);
 }
+
+StateMachine::StateMachine()
+{
+}
+
+StateMachine::~StateMachine()
+{
+}
+

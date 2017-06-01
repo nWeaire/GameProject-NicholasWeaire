@@ -3,6 +3,7 @@
 #include "Font.h"
 #include "Input.h"
 
+
 using namespace aie;
 
 Application2D::Application2D() 
@@ -17,6 +18,13 @@ bool Application2D::startup()
 {
 	m_2dRenderer = new Renderer2D();
 	CollisionManager::Create();
+	
+	StateMachine::Create();
+
+	
+
+
+
 
 	m_cameraX = 0;
 	m_cameraY = 0;
@@ -39,9 +47,6 @@ void Application2D::update(float deltaTime)
 	Input* input = Input::getInstance();
 
 
-	// exit the application
-	if (input->isKeyDown(INPUT_KEY_ESCAPE))
-		quit();
 }
 
 void Application2D::draw() 
