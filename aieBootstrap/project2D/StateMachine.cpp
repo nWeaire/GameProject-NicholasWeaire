@@ -1,47 +1,64 @@
 #include "StateMachine.h"
+#include <crtdbg.h>
+#include "Renderer2D.h"
+using namespace aie;
 
-StateMachine* StateMachine::m_instance = nullptr;
-
-StateMachine::StateMachine()
+StateMachine::StateMachine(int UpdateAmount)
 {
-	m_nCurrentState = -1;
 }
 
 StateMachine::~StateMachine()
 {
+	while (m_CurrentStack.Size() > 0)
+		PopState();
+
+	for (int i = 0; i < m_CurrentStack.Size(); ++i)
+	{
+		delete m_StateList[i];
+	}
 }
 
-
-void StateMachine::Update(float fDeltaTime)
+void StateMachine::Update(float deltaTime)
 {
-	if (m_StateList.Size() <= 0)
+	if (m_CurrentStack.Size() <= 0)
 		return;
 
-	m_StateList[m_nCurrentState]->OnUpdate(fDeltaTime);
+	m_CurrentStack.Top()->onUpdate(deltaTime);
 }
+
 
 void StateMachine::Draw(Renderer2D* m_2dRenderer)
 {
-	if (m_StateList.Size() <= 0)
+	if (m_CurrentStack.Size() <= 0)
 		return;
 
-	m_StateList[m_nCurrentState]->OnDraw(m_2dRenderer);
+	m_CurrentStack.Top()->onDraw(m_2dRenderer);
 }
 
-void StateMachine::SetState(int nStateIndex)
+void StateMachine::PushState(int nStateIndex)
 {
-	if (m_nCurrentState >= 0)
-		m_StateList[m_nCurrentState]->OnExit();
+	// Example of Assert
+	/*_ASSERT(nStateIndex < m_StateList.Size());
+	if (nStateIndex >= m_StateList.Size())
+		return;*/
 
-	m_nCurrentState = nStateIndex;
+	if (m_CurrentStack.Size() >= 0)
+		m_CurrentStack.Top()->onExit();
 
-	m_StateList[m_nCurrentState]->OnEnter();
-
+	m_CurrentStack.Push(m_StateList[nStateIndex]);
+	m_CurrentStack.Top()->onEnter();
 }
 
-void StateMachine::AddState(int nStateIndex, State * pState)
+void StateMachine::PopState()
+{
+	if (m_CurrentStack.Size() >= 0)
+		m_CurrentStack.Top()->onExit();
+
+	m_CurrentStack.Pop();
+	m_CurrentStack.Top()->onEnter();
+}
+
+void StateMachine::AddState(int nStateIndex, State* pState)
 {
 	m_StateList.Insert(nStateIndex, pState);
 }
-
-
