@@ -8,7 +8,7 @@ using namespace aie;
 class StateMachine
 {
 public:
-	StateMachine(int UpdateAmount);
+	StateMachine();
 	~StateMachine();
 
 	void Update(float deltaTime);

@@ -1,18 +1,19 @@
 #include "StateMachine.h"
 #include <crtdbg.h>
 #include "Renderer2D.h"
+
 using namespace aie;
 
-StateMachine::StateMachine(int UpdateAmount)
+StateMachine::StateMachine()
 {
 }
 
 StateMachine::~StateMachine()
 {
-	while (m_CurrentStack.Size() > 0)
+	while (m_CurrentStack.size() > 0)
 		PopState();
 
-	for (int i = 0; i < m_CurrentStack.Size(); ++i)
+	for (int i = 0; i < m_StateList.Size(); ++i)
 	{
 		delete m_StateList[i];
 	}
@@ -20,19 +21,20 @@ StateMachine::~StateMachine()
 
 void StateMachine::Update(float deltaTime)
 {
-	if (m_CurrentStack.Size() <= 0)
+	if (m_CurrentStack.size() <= 0)
 		return;
+	
+	m_CurrentStack.top()->OnUpdate(deltaTime, this);
 
-	m_CurrentStack.Top()->onUpdate(deltaTime);
 }
 
 
 void StateMachine::Draw(Renderer2D* m_2dRenderer)
 {
-	if (m_CurrentStack.Size() <= 0)
+	if (m_CurrentStack.size() <= 0)
 		return;
 
-	m_CurrentStack.Top()->onDraw(m_2dRenderer);
+	m_CurrentStack.top()->OnDraw(m_2dRenderer);
 }
 
 void StateMachine::PushState(int nStateIndex)
@@ -42,20 +44,21 @@ void StateMachine::PushState(int nStateIndex)
 	if (nStateIndex >= m_StateList.Size())
 		return;*/
 
-	if (m_CurrentStack.Size() >= 0)
-		m_CurrentStack.Top()->onExit();
+	if (m_CurrentStack.size() > 0)
+		m_CurrentStack.top()->OnExit();
 
-	m_CurrentStack.Push(m_StateList[nStateIndex]);
-	m_CurrentStack.Top()->onEnter();
+	m_CurrentStack.push(m_StateList[nStateIndex]);
+	m_CurrentStack.top()->OnEnter();
 }
 
 void StateMachine::PopState()
 {
-	if (m_CurrentStack.Size() >= 0)
-		m_CurrentStack.Top()->onExit();
-
-	m_CurrentStack.Pop();
-	m_CurrentStack.Top()->onEnter();
+	if (m_CurrentStack.size() > 0)
+		m_CurrentStack.top()->OnExit();
+	
+	m_CurrentStack.pop();
+	if (m_CurrentStack.size() > 0)
+		m_CurrentStack.top()->OnEnter();
 }
 
 void StateMachine::AddState(int nStateIndex, State* pState)

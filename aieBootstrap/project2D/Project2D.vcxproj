@@ -95,10 +95,13 @@
     <ClCompile Include="Collider2D.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="LoadingState.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="ObjectPool.cpp" />
     <ClCompile Include="ObjectPoolEntity.cpp" />
+    <ClCompile Include="SplashState.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateMachine.cpp" />
   </ItemGroup>
@@ -108,15 +111,18 @@
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="GraphNode.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="ListNode.h" />
-    <ClInclude Include="Menu.h" />
+    <ClInclude Include="LoadingState.h" />
+    <ClInclude Include="MenuState.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="ObjectPoolEntity.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="SplashState.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateMachine.h" />
