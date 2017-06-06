@@ -135,6 +135,11 @@ public:
 		return m_pData[m_nUsed - 1];
 	}
 
+	T SecondLast()
+	{
+		return m_pData[m_nUsed - 2];
+	}
+	
 
 private:
 

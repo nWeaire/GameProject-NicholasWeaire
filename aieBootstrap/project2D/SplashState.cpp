@@ -1,21 +1,25 @@
 #include "SplashState.h"
 #include "Font.h"
 #include "StateMachine.h"
-
+#include "ResourceManager.h"
 
 SplashState::SplashState()
 {
 	timer = 0;
+	ResourceManager<Font>* r1 = ResourceManager<Font>::GetInstance();
+	m_font = r1->LoadResource("./font/consolas.ttf", 32);
 }
 
 
 SplashState::~SplashState()
 {
+	delete m_font;
+
 }
 
 void SplashState::OnEnter()
 {
-	m_font = new Font("./font/consolas.ttf", 32);
+	
 
 }
 
@@ -35,5 +39,5 @@ void SplashState::OnDraw(Renderer2D * m_2dRenderer)
 
 void SplashState::OnExit()
 {
-	delete m_font;
+
 }

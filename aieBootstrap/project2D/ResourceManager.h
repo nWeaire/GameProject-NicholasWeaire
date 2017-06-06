@@ -8,7 +8,7 @@ class ResourceManager
 {
 public:
 
-	T* LoadResource(char* szFilename)
+	T* LoadResource(char* szFilename, int size)
 	{
 
 		//Check if resource is already loaded
@@ -23,7 +23,7 @@ public:
 		}
 
 		//Resource is not loaded, so load it
-		Resource<T>* pResource = new Resource<T>(szFilename);
+		Resource<T>* pResource = new Resource<T>(szFilename, size);
 		m_ResourceList.pushBack(pResource);
 		return pResource->m_pData;
 
@@ -47,12 +47,12 @@ public:
 
 	static void Delete()
 	{
-		delete m_pInstance();
+		delete m_pInstance;
 	}
 
 	static ResourceManager<T>* GetInstance()
 	{
-		return m_pInstance();
+		return m_pInstance;
 	}
 
 	DynamicArray<Resource<T>*> m_ResourceList;

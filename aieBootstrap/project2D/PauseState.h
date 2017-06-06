@@ -15,6 +15,6 @@ public:
 	void OnExit();
 
 private:
-	aie::Font*			m_font;
+	Font*			m_font;
 };
 

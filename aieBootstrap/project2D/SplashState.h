@@ -12,7 +12,7 @@ public:
 	void OnExit();
 
 	float timer;
-	aie::Font*			m_font;
+	Font* m_font;
 
 };
 

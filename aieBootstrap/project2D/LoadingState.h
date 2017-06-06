@@ -1,8 +1,7 @@
 #pragma once
 #include "State.h"
 
-class LoadingState :
-	public State
+class LoadingState : public State
 {
 public:
 	LoadingState();
@@ -15,7 +14,7 @@ public:
 
 private:
 	float timer;
-	aie::Font*			m_font;
+	Font* m_font;
 
 };
 

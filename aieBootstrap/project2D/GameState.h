@@ -16,7 +16,7 @@ public:
 	void OnExit();
 
 private:
-	aie::Font*			m_font;
+	Font* m_font;
 	ObjectPool*			o1;
 	aie::Renderer2D*	m_2dRenderer;
 };

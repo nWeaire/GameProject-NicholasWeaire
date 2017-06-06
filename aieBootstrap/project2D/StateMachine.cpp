@@ -35,6 +35,7 @@ void StateMachine::Draw(Renderer2D* m_2dRenderer)
 		return;
 
 	m_CurrentStack.top()->OnDraw(m_2dRenderer);
+
 }
 
 void StateMachine::PushState(int nStateIndex)

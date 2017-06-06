@@ -39,6 +39,10 @@ public:
 		s.Clear();
 	}
 
+	T SecondLast()
+	{
+		return s.SecondLast();
+	}
 
 	DynamicArray<T> s;
 

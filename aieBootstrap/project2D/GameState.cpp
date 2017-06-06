@@ -1,11 +1,15 @@
 #include "GameState.h"
 #include "Application2D.h"
 #include "PauseState.h"
-
+#include "ResourceManager.h"
 
 GameState::GameState()
 {
-	m_font = new Font("./font/consolas.ttf", 32);
+	Input* input = Input::getInstance();
+	ResourceManager<Font>* r1 = ResourceManager<Font>::GetInstance();
+	m_font = r1->LoadResource("./font/consolas.ttf", 32);
+	
+	//m_font = new Font("./font/consolas.ttf", 32);
 	o1 = new ObjectPool(10);
 }
 

@@ -6,6 +6,7 @@
 #include "GameState.h"
 #include "SplashState.h"
 #include "LoadingState.h"
+#include "ResourceManager.h"
 using namespace aie;
 
 
@@ -25,7 +26,11 @@ Application2D::~Application2D()
 
 bool Application2D::startup() 
 {
+
 	m_2dRenderer = new Renderer2D();
+	
+	ResourceManager<Font>::Create();
+
 	CollisionManager::Create();
 	
 	m_StateMachine = new StateMachine();
@@ -52,7 +57,8 @@ bool Application2D::startup()
 void Application2D::shutdown() 
 {
 	delete m_2dRenderer;
-	CollisionManager::GetInstance()->Destroy();
+	CollisionManager::Destroy();
+	ResourceManager<Font>::Delete();
 	delete m_StateMachine;
 
 }
