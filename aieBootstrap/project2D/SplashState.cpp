@@ -23,7 +23,7 @@ void SplashState::OnUpdate(float fDeltaTime, StateMachine * pMachine)
 {
 	timer += fDeltaTime;
 
-	if (timer > 5)
+	if (timer > 3)
 		pMachine->PopState();
 
 }

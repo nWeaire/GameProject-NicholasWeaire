@@ -1,7 +1,10 @@
 #pragma once
 #include "State.h"
-class GameState :
-	public State
+#include "Input.h"
+#include "Font.h"
+#include "ObjectPool.h"
+#include "Renderer2D.h"
+class GameState : public State
 {
 public:
 	GameState();
@@ -12,5 +15,9 @@ public:
 	void OnDraw(Renderer2D* m_2dRenderer);
 	void OnExit();
 
+private:
+	aie::Font*			m_font;
+	ObjectPool*			o1;
+	aie::Renderer2D*	m_2dRenderer;
 };
 

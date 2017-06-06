@@ -8,8 +8,6 @@ class ResourceManager
 {
 public:
 
-
-
 	T* LoadResource(char* szFilename)
 	{
 

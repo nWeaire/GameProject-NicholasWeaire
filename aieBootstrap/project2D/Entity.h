@@ -2,7 +2,9 @@
 #include <vector>
 #include "Matrix3.h"
 #include "Collider2D.h"
+#include "Renderer2D.h"
 
+using namespace aie;
 //-------------------------------------
 // Parent class which all objects will be derived from
 //-------------------------------------
@@ -55,6 +57,16 @@ public:
 	Matrix3 LocalTransform;
 	// Global transform for update functions for Movement, scale and rotation
 	Matrix3 GlobalTransform;
+
+
+	void Entity::SetActive(bool bActive);
+	bool Entity::GetActive();
+
+
+	void Draw(Renderer2D* m_2dRenderer);
+
+
+
 protected:
 	// Float for speed value
 	float speed;
@@ -67,6 +79,7 @@ protected:
 	// Collider2D for value of the AABB
 	Collider2D Box;
 
+	bool m_bActive;
 
 };
 

@@ -1,7 +1,6 @@
 #pragma once
 #include "State.h"
-class SplashState :
-	public State
+class SplashState : public State
 {
 public:
 	SplashState();

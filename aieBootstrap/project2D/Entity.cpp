@@ -10,6 +10,7 @@ Entity::Entity()
 	float speed = 0; // sets speed
 	float rotSpeed = 0; // rot speed
 	float mass = 0 ; // sets mass
+	m_bActive = false;
 }
 
 //-------------------------------------
@@ -62,4 +63,17 @@ void Entity::AddChild(Entity * child)
 Collider2D Entity::getCollider()
 {
 	return Box;
+}
+
+void Entity::SetActive(bool bActive)
+{
+}
+
+bool Entity::GetActive()
+{
+	return false;
+}
+
+void Entity::Draw(Renderer2D * m_2dRenderer)
+{
 }

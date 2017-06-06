@@ -8,6 +8,13 @@
 #include "LoadingState.h"
 using namespace aie;
 
+
+// GAME_STATE 0;
+// MENU_STATE 1;
+// SPLASH_STATE 2;
+// LOADING_STATE 3;
+// PAUSE_STATE 4;
+
 Application2D::Application2D() 
 {
 }
@@ -23,8 +30,8 @@ bool Application2D::startup()
 	
 	m_StateMachine = new StateMachine();
 
-	m_StateMachine->AddState(0, new MenuState());
-	m_StateMachine->AddState(1, new GameState());
+	m_StateMachine->AddState(0, new GameState());
+	m_StateMachine->AddState(1, new MenuState());
 	m_StateMachine->AddState(2, new SplashState());
 	m_StateMachine->AddState(3, new LoadingState());
 	m_StateMachine->PushState(0);
@@ -48,9 +55,6 @@ void Application2D::shutdown()
 	CollisionManager::GetInstance()->Destroy();
 	delete m_StateMachine;
 
-
-
-
 }
 
 void Application2D::update(float deltaTime) 
@@ -58,7 +62,7 @@ void Application2D::update(float deltaTime)
 	m_timer += deltaTime;
 
 	m_StateMachine->Update(deltaTime);
-
+	
 	// input example
 	Input* input = Input::getInstance();
 
@@ -69,8 +73,6 @@ void Application2D::draw()
 {
 	// wipe the screen to the background colour
 	clearScreen();
-
-	
 
 	// set the camera position before we begin rendering
 	m_2dRenderer->setCameraPos(m_cameraX, m_cameraY);
