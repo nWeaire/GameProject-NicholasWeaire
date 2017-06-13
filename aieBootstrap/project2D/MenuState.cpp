@@ -13,7 +13,7 @@ MenuState::~MenuState()
 
 }
 
-void MenuState::OnEnter()
+void MenuState::OnEnter(StateMachine* pMachine)
 {
 	m_font = new Font("./font/consolas.ttf", 32);
 	
@@ -36,7 +36,7 @@ void MenuState::OnDraw(Renderer2D * m_2dRenderer)
 
 }
 
-void MenuState::OnExit()
+void MenuState::OnExit(StateMachine* pMachine)
 {
 	delete m_font;
 }

@@ -17,9 +17,9 @@ LoadingState::~LoadingState()
 
 }
 
-void LoadingState::OnEnter()
+void LoadingState::OnEnter(StateMachine* pMachine)
 {
-
+	pMachine->SetBackgroundRender(false);
 }
 
 void LoadingState::OnUpdate(float fDeltaTime, StateMachine* pMachine)
@@ -39,7 +39,7 @@ void LoadingState::OnDraw(Renderer2D * m_2dRenderer)
 
 }
 
-void LoadingState::OnExit()
+void LoadingState::OnExit(StateMachine* pMachine)
 {
 
 }

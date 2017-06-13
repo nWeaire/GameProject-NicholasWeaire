@@ -9,6 +9,7 @@ PauseState::PauseState()
 {
 	ResourceManager<Font>* r1 = ResourceManager<Font>::GetInstance();
 	m_font = r1->LoadResource("./font/consolas.ttf", 32);
+	
 }
 
 
@@ -18,9 +19,10 @@ PauseState::~PauseState()
 
 }
 
-void PauseState::OnEnter()
+void PauseState::OnEnter(StateMachine* pMachine)
 {
-	
+
+	pMachine->SetBackgroundRender(true);
 }
 
 void PauseState::OnUpdate(float fDeltaTime, StateMachine * pMachine)
@@ -38,7 +40,8 @@ void PauseState::OnDraw(Renderer2D * m_2dRenderer)
 	m_2dRenderer->drawText(m_font, "Paused, Press Enter to resume game!", 320, 400);
 }
 
-void PauseState::OnExit()
+void PauseState::OnExit(StateMachine* pMachine)
 {
-
+	
+	pMachine->SetBackgroundRender(false);
 }

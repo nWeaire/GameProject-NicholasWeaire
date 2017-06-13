@@ -17,9 +17,9 @@ SplashState::~SplashState()
 
 }
 
-void SplashState::OnEnter()
+void SplashState::OnEnter(StateMachine* pMachine)
 {
-	
+	pMachine->SetBackgroundRender(false);
 
 }
 
@@ -37,7 +37,7 @@ void SplashState::OnDraw(Renderer2D * m_2dRenderer)
 	m_2dRenderer->drawText(m_font, "Splash Screen, Please Wait!", 0, 720 - 64);
 }
 
-void SplashState::OnExit()
+void SplashState::OnExit(StateMachine* pMachine)
 {
 
 }

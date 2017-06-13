@@ -24,6 +24,7 @@ void StateMachine::Update(float deltaTime)
 	if (m_CurrentStack.size() <= 0)
 		return;
 	
+
 	m_CurrentStack.top()->OnUpdate(deltaTime, this);
 
 }
@@ -33,6 +34,11 @@ void StateMachine::Draw(Renderer2D* m_2dRenderer)
 {
 	if (m_CurrentStack.size() <= 0)
 		return;
+
+	if (onoff == true)
+	{
+		m_CurrentStack.SecondLast()->OnDraw(m_2dRenderer);
+	}
 
 	m_CurrentStack.top()->OnDraw(m_2dRenderer);
 
@@ -46,20 +52,26 @@ void StateMachine::PushState(int nStateIndex)
 		return;*/
 
 	if (m_CurrentStack.size() > 0)
-		m_CurrentStack.top()->OnExit();
+		m_CurrentStack.top()->OnExit(this);
 
 	m_CurrentStack.push(m_StateList[nStateIndex]);
-	m_CurrentStack.top()->OnEnter();
+	m_CurrentStack.top()->OnEnter(this);
 }
 
 void StateMachine::PopState()
 {
 	if (m_CurrentStack.size() > 0)
-		m_CurrentStack.top()->OnExit();
+		m_CurrentStack.top()->OnExit(this);
 	
 	m_CurrentStack.pop();
 	if (m_CurrentStack.size() > 0)
-		m_CurrentStack.top()->OnEnter();
+		m_CurrentStack.top()->OnEnter(this);
+}
+
+void StateMachine::SetBackgroundRender(bool onoff)
+{
+	this->onoff = onoff;
+
 }
 
 void StateMachine::AddState(int nStateIndex, State* pState)

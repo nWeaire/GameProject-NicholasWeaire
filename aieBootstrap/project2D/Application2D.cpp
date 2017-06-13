@@ -7,6 +7,7 @@
 #include "SplashState.h"
 #include "LoadingState.h"
 #include "ResourceManager.h"
+#include "PauseState.h"
 using namespace aie;
 
 
@@ -36,7 +37,7 @@ bool Application2D::startup()
 	m_StateMachine->AddState(1, new MenuState());
 	m_StateMachine->AddState(2, new SplashState());
 	m_StateMachine->AddState(3, new LoadingState());
-	
+	m_StateMachine->AddState(4, new PauseState());
 	// Adds inital states on startup of game
 	m_StateMachine->PushState(0);
 	m_StateMachine->PushState(1);
