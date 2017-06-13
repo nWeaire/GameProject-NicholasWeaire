@@ -10,11 +10,6 @@
 using namespace aie;
 
 
-// GAME_STATE 0;
-// MENU_STATE 1;
-// SPLASH_STATE 2;
-// LOADING_STATE 3;
-// PAUSE_STATE 4;
 
 Application2D::Application2D() 
 {
@@ -33,12 +28,16 @@ bool Application2D::startup()
 
 	CollisionManager::Create();
 	
+	// Creates new state machine
 	m_StateMachine = new StateMachine();
 
+	// Creates states for game, menu, splash and loading
 	m_StateMachine->AddState(0, new GameState());
 	m_StateMachine->AddState(1, new MenuState());
 	m_StateMachine->AddState(2, new SplashState());
 	m_StateMachine->AddState(3, new LoadingState());
+	
+	// Adds inital states on startup of game
 	m_StateMachine->PushState(0);
 	m_StateMachine->PushState(1);
 	m_StateMachine->PushState(2);
@@ -46,7 +45,7 @@ bool Application2D::startup()
 
 
 
-
+	// Sets basic camera variables
 	m_cameraX = 0;
 	m_cameraY = 0;
 	m_timer = 0;
@@ -56,6 +55,7 @@ bool Application2D::startup()
 
 void Application2D::shutdown() 
 {
+	// Deletes everything to avoid memory leaks
 	delete m_2dRenderer;
 	CollisionManager::Destroy();
 	ResourceManager<Font>::Delete();
@@ -67,6 +67,7 @@ void Application2D::update(float deltaTime)
 {
 	m_timer += deltaTime;
 
+	// Calls update on all states
 	m_StateMachine->Update(deltaTime);
 	
 	// input example
@@ -86,6 +87,7 @@ void Application2D::draw()
 	// begin drawing sprites
 	m_2dRenderer->begin();
 
+	// Draws states
 	m_StateMachine->Draw(m_2dRenderer);
 
 	// done drawing sprites

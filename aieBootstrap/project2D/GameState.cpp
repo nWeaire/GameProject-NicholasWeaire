@@ -34,7 +34,7 @@ void GameState::OnUpdate(float fDeltaTime, StateMachine * pMachine)
 		pMachine->PushState(4);
 	}
 		
-	if (input->isKeyDown(INPUT_KEY_1))
+	if (input->wasKeyPressed(INPUT_KEY_1))
 	{
 		BoxObject* p = o1->Allocate();
 	}

@@ -2,7 +2,7 @@
 #include "DynamicArray.h"
 #include "Resource.h"
 #include <string.h>
-
+#include "Map.h"
 template <typename T>
 class ResourceManager
 {
@@ -13,20 +13,18 @@ public:
 
 		//Check if resource is already loaded
 		//if it is, return it
-		for (int i = 0; i < m_ResourceList.Size(); ++i)
+		if (m_ResourceList.IsItem(szFilename))
 		{
-			if (strcmp(m_ResourceList[i]->m_szFilename, szFilename) == 0)
-			{
-				return m_ResourceList[i]->m_pData;
-			}
-		
+			return m_ResourceList[szFilename]->m_pData;
 		}
+				
+	
 
 		//Resource is not loaded, so load it
 		Resource<T>* pResource = new Resource<T>(szFilename, size);
-		m_ResourceList.pushBack(pResource);
+		m_ResourceList.AddItem(szFilename, pResource);
 		return pResource->m_pData;
-
+		
 	}
 
 	//Delete everything
@@ -37,6 +35,7 @@ public:
 			delete m_ResourceList[i];
 		}
 		m_ResourceList.Clear();
+		
 	}
 
 	static void Create()
@@ -55,7 +54,7 @@ public:
 		return m_pInstance;
 	}
 
-	DynamicArray<Resource<T>*> m_ResourceList;
+	Map<Resource<T>*> m_ResourceList;
 
 	static ResourceManager<T>* m_pInstance;
 

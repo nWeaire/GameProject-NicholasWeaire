@@ -1,10 +1,17 @@
 #pragma once
 #include <memory.h>
 
+// Templates so it can be applied to any class or variable type
 template <typename T>
 class DynamicArray
 {
 public:
+
+	//----------------------------------------------------
+	// Creates the dynamic array with a max size stated by user
+	// parameters:
+	//		initial size: max size to start the dynamic array at
+	//----------------------------------------------------
 	DynamicArray(int initialSize = 0)
 	{
 		int nCapacity = initialSize;
@@ -15,11 +22,21 @@ public:
 		m_nCapacity = nCapacity;
 		m_nUsed = 0;
 	}
+
+	//----------------------------------------------------
+	// default destructor
+	// deletes dynamic array
+	//----------------------------------------------------
 	~DynamicArray()
 	{
 		delete m_pData;
 	}
 
+	//----------------------------------------------------
+	// Creates dynamic array from existing array
+	// parameters:
+	//		takes in a const dynamic array
+	//----------------------------------------------------
 	DynamicArray(const DynamicArray& other)
 	{
 		m_nCapacity = other.m_nCapacity;
@@ -29,8 +46,12 @@ public:
 		memcpy(m_pData, other.m_pData, sizeof(T) * m_nCapacity);
 	}
 
-
-
+	//----------------------------------------------------
+	// Checks if there is enough room for more data if not calls Resize()
+	// adds data to the back of the array and pushes everything back
+	// parameters:
+	//		value: Takes in data of type determined by template
+	//----------------------------------------------------
 	void pushBack(T value)
 	{
 		if (m_nUsed >= m_nCapacity)
@@ -40,11 +61,24 @@ public:
 		++m_nUsed;
 	}
 
+	//----------------------------------------------------
+	// Calls insert() for first index
+	// parameters:
+	//		value: Takes in data of type determined by template
+	//----------------------------------------------------
 	void pushFront(T value)
 	{
 		Insert(0, value);
 	}
 
+	//----------------------------------------------------
+	// Checks if index is valid
+	// Checks if there is enough room for more data if not calls Resize()
+	// adds data to the specified index in array and pushes everything else back
+	// parameters:
+	//		Index: int that determines where in the array to add value
+	//		value: Takes in data of type determined by template
+	//----------------------------------------------------
 	void Insert(int index, T value)
 	{
 		if (index > m_nUsed)
@@ -62,12 +96,24 @@ public:
 
 	}
 
+	//----------------------------------------------------
+	// reduces the amount of used slots by 1 
+	// returns the data from the back of the array
+	// return:
+	//		returns the last value on the array
+	//----------------------------------------------------
 	T popBack()
 	{
 		--m_nUsed;
 		return m_pData[m_nUsed];
 	}
 
+	//----------------------------------------------------
+	// Checks if the index is valid
+	// adds data to the back of the array and pushes everything back
+	// parameters:
+	//		index: int that determines a location in the array
+	//----------------------------------------------------
 	T Remove(int index)
 	{
 		// backup value we are removing from list
