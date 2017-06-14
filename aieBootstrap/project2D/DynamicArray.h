@@ -130,16 +130,29 @@ public:
 		return value;
 	}
 
+	//----------------------------------------------------
+	// calls remove() on first index
+	// returns the data from the back of the array
+	// return:
+	//		returns the last value on the array
+	//----------------------------------------------------
 	T popFront()
 	{
 		return Remove(0);
 	}
 
+	//----------------------------------------------------
+	// makes m_nUsed = 0 basically removing all usefull data from the array
+	//----------------------------------------------------
 	void Clear()
 	{
 		m_nUsed = 0;
 	}
 
+	//----------------------------------------------------
+	// checks capacity size
+	// resizes array to smallest possible size while retaining the data
+	//----------------------------------------------------
 	void Shrink()
 	{
 		int nCapacity = m_nUsed;
@@ -153,21 +166,43 @@ public:
 		m_nCapacity = nCapacity;
 	}
 
+	//----------------------------------------------------
+	// Operator overload for []
+	// params:
+	//		takes in a templated data type
+	// return:
+	//		returns data from selected index
+	//----------------------------------------------------
 	T& operator[](const int index)
 	{
 		return m_pData[index];
 	}
 
+	//----------------------------------------------------
+	// Gets the size of the array as int
+	// return:
+	//		m_nUsed: returns the size of the array
+	//----------------------------------------------------
 	int Size()
 	{
 		return m_nUsed;
 	}
 
+	//----------------------------------------------------
+	// Gets the capacity of the array as int
+	// return:
+	//		m_nCapacity: returns the Capacity of the array
+	//----------------------------------------------------
 	int Capacity()
 	{
 		return m_nCapacity;
 	}
 
+	//----------------------------------------------------
+	// checks if the array is empty or not
+	// returns:
+	//		bool indicating whether array is empty or not
+	//----------------------------------------------------
 	bool empty()
 	{
 		if (m_nUsed <= 0)
@@ -176,11 +211,21 @@ public:
 			return false;
 	}
 
+	//----------------------------------------------------
+	// returns the data from the end of the array
+	// return:
+	//		Returns the data from the end of the array
+	//----------------------------------------------------
 	T back()
 	{
 		return m_pData[m_nUsed - 1];
 	}
 
+	//----------------------------------------------------
+	// returns the second last piece of data from the array
+	// return:
+	//		Returns the second last piece of data from the array
+	//----------------------------------------------------
 	T SecondLast()
 	{
 		return m_pData[m_nUsed - 2];
@@ -188,7 +233,7 @@ public:
 	
 
 private:
-
+	// IDK
 	DynamicArray& operator= (const DynamicArray& other) = default;
 	DynamicArray(DynamicArray&& other) = default;
 	DynamicArray& operator= (DynamicArray&& other) = default;

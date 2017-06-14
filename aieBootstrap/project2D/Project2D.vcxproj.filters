@@ -68,9 +68,6 @@
     <ClInclude Include="Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Graph.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GraphNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>

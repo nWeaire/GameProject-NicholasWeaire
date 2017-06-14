@@ -12,10 +12,20 @@ public:
 	~StateMachine();
 
 	void Update(float deltaTime);
+	
+	
 	void Draw(Renderer2D* m_2dRenderer);
+	
+	
 	void PushState(int nStateIndex);
+	
+	
 	void AddState(int nStateIndex, State* pState);
+	
+	
 	void PopState();
+	
+	
 	void SetBackgroundRender(bool onoff);
 
 	
