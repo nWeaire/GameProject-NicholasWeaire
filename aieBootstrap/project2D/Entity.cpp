@@ -65,15 +65,30 @@ Collider2D Entity::getCollider()
 	return Box;
 }
 
+//----------------------------------------------------
+// sets the object to either an active or non-active state
+// parameters:
+//			bActive: Sets true or false
+//----------------------------------------------------
 void Entity::SetActive(bool bActive)
 {
 }
 
+//-------------------------------------
+// checks whether active or not and returns bool
+// Returns:
+//		returns a bool of active state
+//-------------------------------------
 bool Entity::GetActive()
 {
 	return false;
 }
 
+//-------------------------------------
+// Draws Objects
+// Params:
+//		m_2dRenderer for use renderering objects
+//-------------------------------------
 void Entity::Draw(Renderer2D * m_2dRenderer)
 {
 }

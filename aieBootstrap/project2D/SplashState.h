@@ -29,13 +29,24 @@ public:
 	//----------------------------------------------------
 	void OnUpdate(float fDeltaTime, StateMachine* pMachine);
 	
-	
+	//----------------------------------------------------
+	// Draw functions to run when draw function is called from state machine
+	// params:
+	//		takes in the state machine so it can call from its functions
+	//----------------------------------------------------
 	void OnDraw(Renderer2D* m_2dRenderer);
 	
-	
+	//----------------------------------------------------
+	// functions to run when exiting state
+	// params:
+	//		takes in the state machine so it can call from its functions
+	//----------------------------------------------------
 	void OnExit(StateMachine* pMachine);
-
+private:
+	// float for timer
 	float timer;
+
+	// pointer to font
 	Font* m_font;
 
 };

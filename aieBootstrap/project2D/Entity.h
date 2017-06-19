@@ -58,11 +58,25 @@ public:
 	// Global transform for update functions for Movement, scale and rotation
 	Matrix3 GlobalTransform;
 
-
+	//-------------------------------------
+	// Sets active state for object
+	// param:
+	//		bActive: true or false for active state
+	//-------------------------------------
 	void Entity::SetActive(bool bActive);
+	
+	//-------------------------------------
+	// checks whether active or not and returns bool
+	// Returns:
+	//		returns a bool of active state
+	//-------------------------------------
 	bool Entity::GetActive();
 
-
+	//-------------------------------------
+	// Draws Objects
+	// Params:
+	//		m_2dRenderer for use renderering objects
+	//-------------------------------------
 	void Draw(Renderer2D* m_2dRenderer);
 
 

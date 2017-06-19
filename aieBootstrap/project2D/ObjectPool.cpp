@@ -15,6 +15,10 @@ ObjectPool::ObjectPool(int nMaxSize)
 
 ObjectPool::~ObjectPool()
 {
+	for (int i = 0; i < m_nMaxSize; ++i)
+	{
+		delete m_pPool[i];
+	}
 	delete[] m_pPool;
 }
 
