@@ -103,7 +103,6 @@
     <ClCompile Include="ObjectPool.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="SplashState.cpp" />
-    <ClCompile Include="State.cpp" />
     <ClCompile Include="StateMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
