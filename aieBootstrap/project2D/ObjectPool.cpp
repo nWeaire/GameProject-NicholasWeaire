@@ -1,10 +1,20 @@
 #include "ObjectPool.h"
 
+<<<<<<< .mine
+//----------------------------------------------------
+// Default Constructor
+// params:
+//		nMaxSize: Max amount of objects to be used in object pool
+//----------------------------------------------------
+||||||| .r38
+
+=======
 //----------------------------------------------------
 // Default constructor
 // params:
 //		nMaxSize: Max starting size for object pool array
 //----------------------------------------------------
+>>>>>>> .r40
 ObjectPool::ObjectPool(int nMaxSize)
 {
 	m_nMaxSize = nMaxSize; // Sets max size for object pool array
@@ -17,9 +27,16 @@ ObjectPool::ObjectPool(int nMaxSize)
 
 }
 
+<<<<<<< .mine
+//----------------------------------------------------
+// Default Destructor
+//----------------------------------------------------
+||||||| .r38
+=======
 //----------------------------------------------------
 // Default destructor
 //----------------------------------------------------
+>>>>>>> .r40
 ObjectPool::~ObjectPool()
 {
 	for (int i = 0; i < m_nMaxSize; ++i) // goes through all objects in the array
@@ -29,11 +46,21 @@ ObjectPool::~ObjectPool()
 	delete[] m_pPool; // Deletes array
 }
 
+<<<<<<< .mine
+//----------------------------------------------------
+// Checks for all active objects in object pool
+// Calls the objects update function on all active objects
+// params:
+//		fDeltaTime: used to make everything in seconds
+//----------------------------------------------------
+||||||| .r38
+=======
 //----------------------------------------------------
 // updates transformation of objects in object pool
 // params:
 //		fDeltaTime: updates in seconds rather then frames
 //----------------------------------------------------
+>>>>>>> .r40
 void ObjectPool::Update(float fDeltaTime)
 {
 	for (int i = 0; i < m_nMaxSize; ++i) // goes through all objects in the array
@@ -47,12 +74,22 @@ void ObjectPool::Update(float fDeltaTime)
 	}
 }
 
+<<<<<<< .mine
+//----------------------------------------------------
+// Checks for all active objects in object pool
+// Calls the objects Draw function on all active objects
+// params:
+//		m_2dRenderer: bootstraps renderer
+//----------------------------------------------------
+||||||| .r38
+=======
 //----------------------------------------------------
 // Checks if objects are active
 // Draws objects if they're in use
 // Params:
 //		m_2dRenderer: aie bootstraps renderer
 //----------------------------------------------------
+>>>>>>> .r40
 void ObjectPool::Draw(aie::Renderer2D* m_2dRenderer)
 {
 	for (int i = 0; i < m_nMaxSize; ++i) // goes through all objects in the array
@@ -66,12 +103,24 @@ void ObjectPool::Draw(aie::Renderer2D* m_2dRenderer)
 	}
 }
 
+<<<<<<< .mine
+//----------------------------------------------------
+// Checks for an inactive object in pool
+// Sets first inactive object to active
+// Returns object
+// returns:
+//		BoxObject*: returns object that was set to active
+//----------------------------------------------------
+||||||| .r38
+
+=======
 //----------------------------------------------------
 // cycles through array to check for non-allocated object
 // sets it to active
 // returns:
 //		BoxObject*: Returns pointer to the allocated object
 //----------------------------------------------------
+>>>>>>> .r40
 BoxObject* ObjectPool::Allocate()
 {
 	for (int i = 0; i < m_nMaxSize; ++i) // Goes through all of the objects in the array
@@ -87,11 +136,20 @@ BoxObject* ObjectPool::Allocate()
 	return nullptr;
 }
 
+<<<<<<< .mine
+//----------------------------------------------------
+// Sets object to inactive
+// params:
+//		object: object that needs to be set to inactive
+//----------------------------------------------------
+||||||| .r38
+=======
 //----------------------------------------------------
 // sets active to false for a certain object
 // params:
 //		BoxObject*: takes in pointer to an object to deallocate
 //----------------------------------------------------
+>>>>>>> .r40
 void ObjectPool::Deallocate(BoxObject* object)
 {
 	object->SetActive(false);

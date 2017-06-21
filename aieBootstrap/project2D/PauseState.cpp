@@ -4,9 +4,18 @@
 #include "ResourceManager.h"
 
 
+<<<<<<< .mine
+//-------------------------------------
+// Constructor
+// gets instance of resource manager of type font
+//-------------------------------------
+||||||| .r36
+
+=======
 //----------------------------------------------------
 // Default constructor
 //----------------------------------------------------
+>>>>>>> .r40
 PauseState::PauseState()
 {
 	ResourceManager<Font>* r1 = ResourceManager<Font>::GetInstance();
@@ -14,9 +23,18 @@ PauseState::PauseState()
 	
 }
 
+<<<<<<< .mine
+//-------------------------------------
+// Destructor
+// Deletes m_font and o1 to prevent memory leaks
+//-------------------------------------
+||||||| .r36
+
+=======
 //----------------------------------------------------
 // Default destructor
 //----------------------------------------------------
+>>>>>>> .r40
 PauseState::~PauseState()
 {
 	delete m_font;
