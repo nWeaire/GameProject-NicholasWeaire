@@ -3,17 +3,10 @@
 #include "StateMachine.h"
 #include "ResourceManager.h"
 
-<<<<<<< .mine
 //-------------------------------------
 // Constructor
 // Gets instance of resource manager of type font
 //-------------------------------------
-||||||| .r36
-=======
-//----------------------------------------------------
-// Default constructor
-//----------------------------------------------------
->>>>>>> .r40
 SplashState::SplashState()
 {
 	timer = 0;
@@ -21,21 +14,12 @@ SplashState::SplashState()
 	m_font = r1->LoadResource("./font/consolas.ttf", 32);
 }
 
-<<<<<<< .mine
-//-------------------------------------
-// Destructor
-// Deletes m_font and o1 to prevent memory leaks
-//-------------------------------------
-||||||| .r36
-
-=======
 //----------------------------------------------------
 // Default destructor
 //----------------------------------------------------
->>>>>>> .r40
 SplashState::~SplashState()
 {
-	delete m_font;
+	//delete m_font;
 
 }
 

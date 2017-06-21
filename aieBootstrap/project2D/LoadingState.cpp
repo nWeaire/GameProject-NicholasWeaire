@@ -19,19 +19,10 @@ LoadingState::LoadingState()
 	m_font = r1->LoadResource("./font/consolas.ttf", 32);
 }
 
-<<<<<<< .mine
 //-------------------------------------
 // Destructor
 // Deletes m_font and o1 to prevent memory leaks
 //-------------------------------------
-||||||| .r36
-
-=======
-//-------------------------------------
-// Destructor
-// Deletes m_font to prevent memory leaks
-//-------------------------------------
->>>>>>> .r40
 LoadingState::~LoadingState()
 {
 	delete m_font;

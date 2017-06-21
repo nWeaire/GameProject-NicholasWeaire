@@ -1,35 +1,20 @@
 #include "MenuState.h"
 #include "Application2D.h"
 #include "Input.h"
-<<<<<<< .mine
-
-//----------------------------------------------------
-// Default Constructor
-//----------------------------------------------------
-||||||| .r36
-
-
-=======
 #include "ResourceManager.h"
+
+
 //-------------------------------------
 // Default Constructor
 //-------------------------------------
->>>>>>> .r40
 MenuState::MenuState()
 {
 
 }
 
-<<<<<<< .mine
 //----------------------------------------------------
 // Default Destructor
 //----------------------------------------------------
-||||||| .r36
-=======
-//-------------------------------------
-// default Destructor
-//-------------------------------------
->>>>>>> .r40
 MenuState::~MenuState()
 {
 
@@ -79,5 +64,5 @@ void MenuState::OnDraw(Renderer2D * m_2dRenderer)
 //----------------------------------------------------
 void MenuState::OnExit(StateMachine* pMachine)
 {
-	delete m_font; // Deletes m_font to prevent memory leaks
+	//delete m_font; // Deletes m_font to prevent memory leaks
 }

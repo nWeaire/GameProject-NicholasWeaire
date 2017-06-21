@@ -57,11 +57,12 @@ bool Application2D::startup()
 void Application2D::shutdown() 
 {
 	// Deletes everything to avoid memory leaks
-	delete m_2dRenderer;
+	delete m_StateMachine;
+	
 	CollisionManager::Destroy();
 	ResourceManager<Font>::Delete();
-	delete m_StateMachine;
 
+	delete m_2dRenderer;
 }
 
 void Application2D::update(float deltaTime) 
