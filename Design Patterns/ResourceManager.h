@@ -2,36 +2,45 @@
 #include "DynamicArray.h"
 #include "Resource.h"
 #include <string.h>
-
+#include "Map.h"
+#include <crtdbg.h>
 template <typename T>
 class ResourceManager
 {
 public:
 
 
-
-	T* LoadResource(char* szFilename)
+	//----------------------------------------------------
+	// Loads resource from file name and sets a font size
+	// returns:
+	//		T*: templated type of resource
+	// params:
+	//		szFilename: file name of resource
+	//		Size: Font size, only used with font
+	//----------------------------------------------------
+	T* LoadResource(char* szFilename, int size)
 	{
 
 		//Check if resource is already loaded
 		//if it is, return it
-		for (int i = 0; i < m_ResourceList.Size(); ++i)
+		if (m_ResourceList.IsItem(szFilename))
 		{
-			if (strcmp(m_ResourceList[i]->m_szFilename, szFilename) == 0)
-			{
-				return m_ResourceList[i]->m_pData;
-			}
-		
+			return m_ResourceList[szFilename]->m_pData;
 		}
+				
+	
 
 		//Resource is not loaded, so load it
-		Resource<T>* pResource = new Resource<T>(szFilename);
-		m_ResourceList.pushBack(pResource);
+		Resource<T>* pResource = new Resource<T>(szFilename, size);
+		_ASSERT(pResource);
+		m_ResourceList.AddItem(szFilename, pResource);
 		return pResource->m_pData;
-
+		
 	}
 
-	//Delete everything
+	//----------------------------------------------------
+	// unloads and deletes all resources
+	//----------------------------------------------------
 	void UnloadAllResources()
 	{
 		for (int i = 0; i < m_ResourceList.Size(); ++i)
@@ -39,35 +48,60 @@ public:
 			delete m_ResourceList[i];
 		}
 		m_ResourceList.Clear();
+		
 	}
 
+	//----------------------------------------------------
+	// Checks if resource manager has been created before
+	// Creates Resource manager
+	//----------------------------------------------------
 	static void Create()
 	{
 		if (!m_pInstance)
-			m_pInstance = new ResourceManager<T>();
+		{
+		m_pInstance = new ResourceManager<T>();
+		_ASSERT(m_pInstance);
+		}
 	}
 
+	//----------------------------------------------------
+	// Deletes resource manager
+	//----------------------------------------------------
 	static void Delete()
 	{
-		delete m_pInstance();
+		delete m_pInstance;
 	}
 
+	//----------------------------------------------------
+	// gets the instance of resource manager to call all the functions from
+	// returns:
+	//		ResourceManager<T>*: returns the resource manager to call functions from
+	//----------------------------------------------------
 	static ResourceManager<T>* GetInstance()
 	{
-		return m_pInstance();
+		return m_pInstance;
 	}
 
-	DynamicArray<Resource<T>*> m_ResourceList;
+	// Map of resources
+	Map<Resource<T>*> m_ResourceList;
 
+	// Static instance of resource manaher
 	static ResourceManager<T>* m_pInstance;
 
 
 private:
+	//----------------------------------------------------
+	// Default constructor
+	//----------------------------------------------------
 	ResourceManager()
 	{
 
 	}
 
+	//----------------------------------------------------
+	// Default destructor
+	// Calls UnloadAllResources()
+	//----------------------------------------------------
 	~ResourceManager()
 	{
 		UnloadAllResources();

@@ -278,12 +278,6 @@ void StackTest()
 
 void main()
 {
-	//ObjectPool pool(50);
-
-	//Entity* p = pool.Allocate();
-
-	//pool.Deallocate(p);
-
 	DynamicArrayTest();
 	LinkedListTest();
 	QueueTest();
