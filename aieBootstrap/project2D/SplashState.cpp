@@ -19,7 +19,7 @@ SplashState::SplashState()
 //----------------------------------------------------
 SplashState::~SplashState()
 {
-	//delete m_font;
+	
 
 }
 

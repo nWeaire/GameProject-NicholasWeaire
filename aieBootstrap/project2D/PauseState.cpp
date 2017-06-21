@@ -19,7 +19,7 @@ PauseState::PauseState()
 //----------------------------------------------------
 PauseState::~PauseState()
 {
-	//delete m_font;
+	
 
 }
 

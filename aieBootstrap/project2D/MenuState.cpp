@@ -64,5 +64,5 @@ void MenuState::OnDraw(Renderer2D * m_2dRenderer)
 //----------------------------------------------------
 void MenuState::OnExit(StateMachine* pMachine)
 {
-	//delete m_font; // Deletes m_font to prevent memory leaks
+
 }

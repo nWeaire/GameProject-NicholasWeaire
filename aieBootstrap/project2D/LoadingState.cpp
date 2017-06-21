@@ -25,7 +25,7 @@ LoadingState::LoadingState()
 //-------------------------------------
 LoadingState::~LoadingState()
 {
-	delete m_font;
+
 }
 
 //----------------------------------------------------
