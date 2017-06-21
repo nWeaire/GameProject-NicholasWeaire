@@ -17,6 +17,7 @@ GameState::GameState()
 	
 	//m_font = new Font("./font/consolas.ttf", 32);
 	o1 = new ObjectPool(10);
+	_ASSERT(o1);
 }
 
 //-------------------------------------
@@ -25,7 +26,6 @@ GameState::GameState()
 //-------------------------------------
 GameState::~GameState()
 {
-	delete m_font;
 	delete o1;
 }
 

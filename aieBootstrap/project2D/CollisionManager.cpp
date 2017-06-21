@@ -1,5 +1,5 @@
 #include "CollisionManager.h"
-
+#include <crtdbg.h>
 #include <iostream>
 // Sets collionmanager to null for saftey reasons
 CollisionManager* CollisionManager::m_instance = nullptr;
@@ -29,8 +29,11 @@ CollisionManager* CollisionManager::GetInstance()
 //-------------------------------------
 void CollisionManager::Create()
 {
-	if(!m_instance)
+	if (!m_instance)
+	{
 		m_instance = new CollisionManager();
+		_ASSERT(m_instance);
+	}
 }
 
 //-------------------------------------

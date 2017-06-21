@@ -11,10 +11,11 @@ ObjectPool::ObjectPool(int nMaxSize)
 {
 	m_nMaxSize = nMaxSize; // Sets max size for object pool array
 	m_pPool = new BoxObject*[nMaxSize]; // Creates new array of entities
-
+	_ASSERT(m_pPool);
 	for (int i = 0; i < nMaxSize; ++i) // for loop to go through all objects in the array
 	{
 		m_pPool[i] = new BoxObject(); // Fills array with objects
+		_ASSERT(m_pPool[i]);
 	}
 
 }

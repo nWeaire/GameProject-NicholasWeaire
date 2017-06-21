@@ -8,6 +8,7 @@
 #include "LoadingState.h"
 #include "ResourceManager.h"
 #include "PauseState.h"
+#include <crtdbg.h>
 using namespace aie;
 
 
@@ -22,15 +23,17 @@ Application2D::~Application2D()
 
 bool Application2D::startup() 
 {
-
-	m_2dRenderer = new Renderer2D();
 	
+	m_2dRenderer = new Renderer2D();
+	_ASSERT(m_2dRenderer);
+
 	ResourceManager<Font>::Create();
 
 	CollisionManager::Create();
 	
 	// Creates new state machine
 	m_StateMachine = new StateMachine();
+	_ASSERT(m_StateMachine);
 
 	// Creates states for game, menu, splash and loading
 	m_StateMachine->AddState(0, new GameState());
